@@ -6,13 +6,20 @@
 </head>
 <body>
   <h1 style="color:red; background-color:powderblue;"> ToDo List</h1>
-    <table>
+  <a href="{% url 'task-create' %}"> Add Tasks </a>
+  
+  <table>
         <tr>
             <th>Item</th>
+            <th></th>
+            <th></th>
         </tr>
-        {% for task in object_list %}
+        {% for task in tasks %}
         <tr>
-            <td> {{ task.title }} </td>
+            <td>{{ task.title }}</td>
+            <td><a href="{% url  'task' task.id %}"> View</a> </td>'
+            <td><a href="{% url  'task-update' task.id %}"> Edit</a> </td>
+
         </tr>
         {% empty %}
             <h3>No items in list</h3>
